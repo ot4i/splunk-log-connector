@@ -1,0 +1,1 @@
+The SplunkLog connector gives IIB flow developers the opportunity to send log events directly from a message flow rather than though an intermediary layer such as a file or syslog. The connector uses the Splunk REST API to insert the events directly into a Splunk instance.
