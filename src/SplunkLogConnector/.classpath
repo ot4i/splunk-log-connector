@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main"/>
+	<classpathentry kind="src" path="src/test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="/home/carsten/Libs/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="/home/carsten/Libs/commons-httpclient-contrib.jar"/>
+	<classpathentry kind="lib" path="/home/carsten/Libs/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="/home/carsten/Libs/httpclient-4.5.jar"/>
+	<classpathentry kind="lib" path="/home/carsten/Libs/httpclient-cache-4.5.jar"/>
+	<classpathentry kind="lib" path="/home/carsten/Libs/httpcore-4.4.1.jar"/>
+	<classpathentry kind="lib" path="/opt/ibm/iib-10.0.0.1/server/classes/cmnCon.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

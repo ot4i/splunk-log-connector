@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Require-Bundle: com.ibm.etools.mft.api,com.ibm.etools.mft.util.ui,com.
+ ibm.etools.mft.config
+Bundle-Vendor: SplunkLogNodes Provider
+Bundle-Version: 1.0.0.qualifier
+Bundle-Name: SplunkLogNodes Plug-in
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: SplunkLogNodes; singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+

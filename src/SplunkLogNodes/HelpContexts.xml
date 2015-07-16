@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+    <!--This is a generated file.-->
+    <!--User modifications to the values in this file will be preserved-->
+    <context id="com.ibm.connectors.splunklog.ComIbmOutput" title="SplunkLogOutput">
+        <description>SplunkLogOutput</description>
+    </context>
+</contexts>

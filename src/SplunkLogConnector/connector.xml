@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <connectorProvider name="SplunkLog">
+     <connectorFactory className="com.ibm.connectors.splunklog.SplunkLogConnectorFactory">
+     </connectorFactory>
+ </connectorProvider>
