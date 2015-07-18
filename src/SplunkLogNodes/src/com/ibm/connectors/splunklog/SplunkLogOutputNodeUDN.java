@@ -21,28 +21,73 @@ public class SplunkLogOutputNodeUDN extends Node {
 	protected final static String PROPERTY_CONNECTORNAME = "connectorName";
 	protected final static String PROPERTY_HOST = "host";
 	protected final static String PROPERTY_PORT = "port";
-	protected final static String PROPERTY_SPLUNK_EVENT = "splunk_Event";
 	protected final static String PROPERTY_USER = "user";
 	protected final static String PROPERTY_PASS = "pass";
 	protected final static String PROPERTY_USEHTTPS = "usehttps";
+	protected final static String PROPERTY_SPLUNK_LOGLEVEL = "splunk_loglevel";
+	protected final static String PROPERTY_SPLUNK_EVENT = "splunk_Event";
+	protected final static String PROPERTY_SOURCE = "source";
 	protected final static String PROPERTY_INCLUDEPAYLOAD = "includePayload";
+	protected final static String PROPERTY_SOURCETYPE = "sourcetype";
 	protected final static String PROPERTY_INDEX = "index";
 	protected final static String PROPERTY_RESOURCE = "resource";
-	protected final static String PROPERTY_SPLUNK_LOGLEVEL = "splunk_loglevel";
+	protected final static String PROPERTY_IGNORESPLUNKERRORS = "ignoreSplunkErrors";
 
+
+	/**
+	 * <I>ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL</I>
+	 * <pre>
+	 * ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.DEBUG = DEBUG
+	 * ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.INFO = INFO
+	 * ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.WARN = WARN
+	 * ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.ERROR = ERROR
+	 * ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.FATAL = FATAL
+	 * </pre>
+	 */
+	public static class ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL {
+		private String value;
+
+		public static final ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL DEBUG = new ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL("DEBUG");
+		public static final ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL INFO = new ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL("INFO");
+		public static final ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL WARN = new ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL("WARN");
+		public static final ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL ERROR = new ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL("ERROR");
+		public static final ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL FATAL = new ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL("FATAL");
+
+		protected ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL(String value) {
+			this.value = value;
+		}
+		public String toString() {
+			return value;
+		}
+
+		protected static ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL getEnumFromString(String enumValue) {
+			ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL enumConst = ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.DEBUG;
+			if (ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.INFO.value.equals(enumValue)) enumConst = ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.INFO;
+			if (ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.WARN.value.equals(enumValue)) enumConst = ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.WARN;
+			if (ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.ERROR.value.equals(enumValue)) enumConst = ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.ERROR;
+			if (ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.FATAL.value.equals(enumValue)) enumConst = ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.FATAL;
+			return enumConst;
+		}
+
+		public static String[] values = new String[]{ "DEBUG", "INFO", "WARN", "ERROR", "FATAL" };
+
+	}
 	protected NodeProperty[] getNodeProperties() {
 		return new NodeProperty[] {
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_CONNECTORNAME,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, "SplunkLog","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_HOST,		NodeProperty.Usage.MANDATORY,	false,	NodeProperty.Type.STRING, "","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_PORT,		NodeProperty.Usage.MANDATORY,	false,	NodeProperty.Type.STRING, "","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
-			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_EVENT,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, "","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_USER,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, "","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_PASS,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, "","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_USEHTTPS,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.BOOLEAN, "true","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
+			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_LOGLEVEL,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.ENUMERATION, "INFO", ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.class,"","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
+			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_EVENT,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, "","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
+			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_SOURCE,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, null,"","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_INCLUDEPAYLOAD,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.BOOLEAN, "true","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
+			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_SOURCETYPE,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, null,"","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_INDEX,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, null,"","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_RESOURCE,		NodeProperty.Usage.MANDATORY,	false,	NodeProperty.Type.STRING, "/services/receivers/simple","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
-			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_LOGLEVEL,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, "INFO","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes")
+			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_IGNORESPLUNKERRORS,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.BOOLEAN, "false","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes")
 		};
 	}
 
@@ -136,28 +181,9 @@ public class SplunkLogOutputNodeUDN extends Node {
 	}
 
 	/**
-	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>splunk_Event</I>" property
+	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>User</I>" property
 	 * 
-	 * @param value String ; the value to set the property "<I>splunk_Event</I>"
-	 */
-	public SplunkLogOutputNodeUDN setSplunk_Event(String value) {
-		setProperty(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_EVENT, value);
-		return this;
-	}
-
-	/**
-	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>splunk_Event</I>" property
-	 * 
-	 * @return String; the value of the property "<I>splunk_Event</I>"
-	 */
-	public String getSplunk_Event() {
-		return (String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_EVENT);
-	}
-
-	/**
-	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>user</I>" property
-	 * 
-	 * @param value String ; the value to set the property "<I>user</I>"
+	 * @param value String ; the value to set the property "<I>User</I>"
 	 */
 	public SplunkLogOutputNodeUDN setUser(String value) {
 		setProperty(SplunkLogOutputNodeUDN.PROPERTY_USER, value);
@@ -165,18 +191,18 @@ public class SplunkLogOutputNodeUDN extends Node {
 	}
 
 	/**
-	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>user</I>" property
+	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>User</I>" property
 	 * 
-	 * @return String; the value of the property "<I>user</I>"
+	 * @return String; the value of the property "<I>User</I>"
 	 */
 	public String getUser() {
 		return (String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_USER);
 	}
 
 	/**
-	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>pass</I>" property
+	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>Password</I>" property
 	 * 
-	 * @param value String ; the value to set the property "<I>pass</I>"
+	 * @param value String ; the value to set the property "<I>Password</I>"
 	 */
 	public SplunkLogOutputNodeUDN setPass(String value) {
 		setProperty(SplunkLogOutputNodeUDN.PROPERTY_PASS, value);
@@ -184,9 +210,9 @@ public class SplunkLogOutputNodeUDN extends Node {
 	}
 
 	/**
-	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>pass</I>" property
+	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>Password</I>" property
 	 * 
-	 * @return String; the value of the property "<I>pass</I>"
+	 * @return String; the value of the property "<I>Password</I>"
 	 */
 	public String getPass() {
 		return (String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_PASS);
@@ -216,6 +242,64 @@ public class SplunkLogOutputNodeUDN extends Node {
 	}
 
 	/**
+	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>Log level</I>" property
+	 * 
+	 * @param value ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL ; the value to set the property "<I>Log level</I>"
+	 */
+	public SplunkLogOutputNodeUDN setSplunk_loglevel(ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL value) {
+		setProperty(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_LOGLEVEL, value.toString());
+		return this;
+	}
+
+	/**
+	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>Log level</I>" property
+	 * 
+	 * @return ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL; the value of the property "<I>Log level</I>"
+	 */
+	public ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL getSplunk_loglevel() {
+		ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL value = ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.getEnumFromString((String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_LOGLEVEL));
+		return value;
+	}
+
+	/**
+	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>splunk_Event</I>" property
+	 * 
+	 * @param value String ; the value to set the property "<I>splunk_Event</I>"
+	 */
+	public SplunkLogOutputNodeUDN setSplunk_Event(String value) {
+		setProperty(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_EVENT, value);
+		return this;
+	}
+
+	/**
+	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>splunk_Event</I>" property
+	 * 
+	 * @return String; the value of the property "<I>splunk_Event</I>"
+	 */
+	public String getSplunk_Event() {
+		return (String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_EVENT);
+	}
+
+	/**
+	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>source</I>" property
+	 * 
+	 * @param value String ; the value to set the property "<I>source</I>"
+	 */
+	public SplunkLogOutputNodeUDN setSource(String value) {
+		setProperty(SplunkLogOutputNodeUDN.PROPERTY_SOURCE, value);
+		return this;
+	}
+
+	/**
+	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>source</I>" property
+	 * 
+	 * @return String; the value of the property "<I>source</I>"
+	 */
+	public String getSource() {
+		return (String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_SOURCE);
+	}
+
+	/**
 	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>includePayload</I>" property
 	 * 
 	 * @param value boolean ; the value to set the property "<I>includePayload</I>"
@@ -239,9 +323,28 @@ public class SplunkLogOutputNodeUDN extends Node {
 	}
 
 	/**
-	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>index</I>" property
+	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>Source type</I>" property
 	 * 
-	 * @param value String ; the value to set the property "<I>index</I>"
+	 * @param value String ; the value to set the property "<I>Source type</I>"
+	 */
+	public SplunkLogOutputNodeUDN setSourcetype(String value) {
+		setProperty(SplunkLogOutputNodeUDN.PROPERTY_SOURCETYPE, value);
+		return this;
+	}
+
+	/**
+	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>Source type</I>" property
+	 * 
+	 * @return String; the value of the property "<I>Source type</I>"
+	 */
+	public String getSourcetype() {
+		return (String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_SOURCETYPE);
+	}
+
+	/**
+	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>Index</I>" property
+	 * 
+	 * @param value String ; the value to set the property "<I>Index</I>"
 	 */
 	public SplunkLogOutputNodeUDN setIndex(String value) {
 		setProperty(SplunkLogOutputNodeUDN.PROPERTY_INDEX, value);
@@ -249,9 +352,9 @@ public class SplunkLogOutputNodeUDN extends Node {
 	}
 
 	/**
-	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>index</I>" property
+	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>Index</I>" property
 	 * 
-	 * @return String; the value of the property "<I>index</I>"
+	 * @return String; the value of the property "<I>Index</I>"
 	 */
 	public String getIndex() {
 		return (String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_INDEX);
@@ -277,22 +380,26 @@ public class SplunkLogOutputNodeUDN extends Node {
 	}
 
 	/**
-	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>Log level</I>" property
+	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>ignoreSplunkErrors</I>" property
 	 * 
-	 * @param value String ; the value to set the property "<I>Log level</I>"
+	 * @param value boolean ; the value to set the property "<I>ignoreSplunkErrors</I>"
 	 */
-	public SplunkLogOutputNodeUDN setSplunk_loglevel(String value) {
-		setProperty(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_LOGLEVEL, value);
+	public SplunkLogOutputNodeUDN setIgnoreSplunkErrors(boolean value) {
+		setProperty(SplunkLogOutputNodeUDN.PROPERTY_IGNORESPLUNKERRORS, String.valueOf(value));
 		return this;
 	}
 
 	/**
-	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>Log level</I>" property
+	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>ignoreSplunkErrors</I>" property
 	 * 
-	 * @return String; the value of the property "<I>Log level</I>"
+	 * @return boolean; the value of the property "<I>ignoreSplunkErrors</I>"
 	 */
-	public String getSplunk_loglevel() {
-		return (String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_LOGLEVEL);
+	public boolean getIgnoreSplunkErrors(){
+	if (getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_IGNORESPLUNKERRORS).equals("true")){
+		return true;
+	} else {
+		return false;
+		}
 	}
 
 	public String getNodeName() {

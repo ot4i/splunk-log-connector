@@ -11,9 +11,6 @@
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.port" name="port" lowerBound="1" defaultValueLiteral="">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.splunk_Event" name="splunk_Event" defaultValueLiteral="">
-      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.user" name="user" defaultValueLiteral="">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
@@ -23,8 +20,18 @@
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.usehttps" name="usehttps" defaultValueLiteral="true">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.splunk_loglevel" name="splunk_loglevel" eType="//@eClassifiers.1" defaultValueLiteral="INFO"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.splunk_Event" name="splunk_Event" defaultValueLiteral="">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.source" name="source">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.includePayload" name="includePayload" defaultValueLiteral="true">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.sourcetype" name="sourcetype">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.index" name="index">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -32,8 +39,8 @@
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.resource" name="resource" lowerBound="1" defaultValueLiteral="/services/receivers/simple">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.splunk_loglevel" name="splunk_loglevel" defaultValueLiteral="INFO">
-      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ignoreSplunkErrors" name="ignoreSplunkErrors" defaultValueLiteral="false">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
     <translation xmi:type="utility:TranslatableString" key="ComIbmOutput" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/SplunkLogNodes/icons/full/obj16/com/ibm/connectors/splunklog/ComIbmOutput.gif"/>
@@ -53,22 +60,31 @@
           <propertyName xmi:type="utility:TranslatableString" key="Property.host" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
           <propertyDescriptor groupName="Group.Basic" describedAttribute="Property.port">
             <propertyName xmi:type="utility:TranslatableString" key="Property.port" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-            <propertyDescriptor groupName="Group.Basic" describedAttribute="Property.splunk_Event">
-              <propertyName xmi:type="utility:TranslatableString" key="Property.splunk_Event" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-              <propertyDescriptor groupName="Group.Security" describedAttribute="Property.user">
-                <propertyName xmi:type="utility:TranslatableString" key="Property.user" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                <propertyDescriptor groupName="Group.Security" describedAttribute="Property.pass">
-                  <propertyName xmi:type="utility:TranslatableString" key="Property.pass" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                  <propertyDescriptor groupName="Group.Security" describedAttribute="Property.usehttps">
-                    <propertyName xmi:type="utility:TranslatableString" key="Property.usehttps" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                    <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.includePayload">
-                      <propertyName xmi:type="utility:TranslatableString" key="Property.includePayload" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                      <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.index">
-                        <propertyName xmi:type="utility:TranslatableString" key="Property.index" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                        <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.resource">
-                          <propertyName xmi:type="utility:TranslatableString" key="Property.resource" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                          <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.splunk_loglevel">
-                            <propertyName xmi:type="utility:TranslatableString" key="Property.splunk_loglevel" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+            <propertyDescriptor groupName="Group.Security" describedAttribute="Property.user">
+              <propertyName xmi:type="utility:TranslatableString" key="Property.user" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+              <propertyDescriptor groupName="Group.Security" describedAttribute="Property.pass">
+                <propertyName xmi:type="utility:TranslatableString" key="Property.pass" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                <propertyDescriptor groupName="Group.Security" describedAttribute="Property.usehttps">
+                  <propertyName xmi:type="utility:TranslatableString" key="Property.usehttps" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                  <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.splunk_loglevel">
+                    <propertyName xmi:type="utility:TranslatableString" key="Property.splunk_loglevel" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                    <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.splunk_Event">
+                      <propertyName xmi:type="utility:TranslatableString" key="Property.splunk_Event" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                      <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.source">
+                        <propertyName xmi:type="utility:TranslatableString" key="Property.source" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                        <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.includePayload">
+                          <propertyName xmi:type="utility:TranslatableString" key="Property.includePayload" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                          <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.sourcetype">
+                            <propertyName xmi:type="utility:TranslatableString" key="Property.sourcetype" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                            <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.index">
+                              <propertyName xmi:type="utility:TranslatableString" key="Property.index" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                              <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.resource">
+                                <propertyName xmi:type="utility:TranslatableString" key="Property.resource" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                                <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.ignoreSplunkErrors">
+                                  <propertyName xmi:type="utility:TranslatableString" key="Property.ignoreSplunkErrors" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                                </propertyDescriptor>
+                              </propertyDescriptor>
+                            </propertyDescriptor>
                           </propertyDescriptor>
                         </propertyDescriptor>
                       </propertyDescriptor>
@@ -81,5 +97,12 @@
         </propertyDescriptor>
       </propertyDescriptor>
     </propertyOrganizer>
+  </eClassifiers>
+  <eClassifiers xmi:type="ecore:EEnum">
+    <eLiterals xmi:id="splunk_loglevel.DEBUG" name="DEBUG"/>
+    <eLiterals xmi:id="splunk_loglevel.INFO" name="INFO" value="1"/>
+    <eLiterals xmi:id="splunk_loglevel.WARN" name="WARN" value="2"/>
+    <eLiterals xmi:id="splunk_loglevel.ERROR" name="ERROR" value="3"/>
+    <eLiterals xmi:id="splunk_loglevel.FATAL" name="FATAL" value="4"/>
   </eClassifiers>
 </ecore:EPackage>
