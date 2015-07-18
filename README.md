@@ -1,4 +1,4 @@
-# SplunkLog Connector for IIB
+# SplunkLog Connector
 
 
 ## Introduction
@@ -14,17 +14,32 @@ Splunk (the product) captures, indexes and correlates real-time data in a search
 [...]"  from Wikipedia.
 
 ## Installation
-
+There are no releases yet. Feel free to have a look and build the code yourself though.
 
 ### Build configuration
 
-...
+1. Import the eclipse projects under src into your workspace.
+2. Add the dependencies (listed below)
+  1. to the classpath of the SplunkLogConnector project
+  2. to the connectors project in the runtime ({iib_workpath}/connectors/SplunkLog)
+3. Start Simulation of the SplunkLogNodes project
 
 ### Dependencies
 
-...
+The connector uses the following of libraries:
+- commons-codec-1.9.jar
+- commons-httpclient-contrib.jar
+- commons-logging-1.2.jar
+- httpclient-4.5.jar
+- httpclient-cache-4.5.jar
+- httpcore-4.4.1.jar
 
-## Use cases 
+### Testing
+
+Unless you already have got a Splunk instance to test with, there is a docker image which can be used:
+- ` https://registry.hub.docker.com/u/dmaxwell/splunk/ `
+
+## Dev status 
 
 Here is an overview of how far the implementation of the differnt use cases has come so far.
 
