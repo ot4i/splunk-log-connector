@@ -80,8 +80,12 @@ public class SplunkHttpConnection
     {
       myhPost.setEntity(payload);
       HttpResponse response = myhClient.execute(myhPost, myhContext);
+      Integer statusCode = response.getStatusLine().getStatusCode();
+      if (statusCode != 200 && !connData.getIgnoreSplunkErrors()) {
+		throw new ConnectorException("Error posting log event to Splunk: " + response.getStatusLine().toString());
+	}      
       System.out.println(response.getStatusLine().toString());
-      properties.setProperty("status", String.valueOf(response.getStatusLine().getStatusCode()));
+      properties.setProperty("status", String.valueOf(statusCode));
       Integer leasedConns = Integer.valueOf(((PoolingHttpClientConnectionManager)this.cm).getTotalStats().getLeased());
       properties.setProperty("conns_leased", leasedConns.toString());
       Integer availConns = Integer.valueOf(((PoolingHttpClientConnectionManager)this.cm).getTotalStats().getAvailable());

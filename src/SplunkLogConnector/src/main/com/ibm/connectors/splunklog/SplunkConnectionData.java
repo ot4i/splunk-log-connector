@@ -25,6 +25,7 @@ public class SplunkConnectionData {
 	private String user;
 	private String pass;
 	private String scheme;
+	private Boolean ignoreSplunkErrors;
 	
 	public SplunkConnectionData(Properties props)throws ConnectorException{
 		this.populateURI(props);
@@ -38,13 +39,18 @@ public class SplunkConnectionData {
 		String resource = props.getProperty("resource");
 		this.setUser(props.getProperty("user"));
 		this.setPass(props.getProperty("pass"));
+		this.setIgnoreSplunkErrors(props.getProperty("ignoreSplunkErrors","").equalsIgnoreCase("true"));
 		
 		this.myUriBuilder = new URIBuilder();
 		this.myUriBuilder.setHost(host);
 		this.myUriBuilder.setPort(Integer.parseInt(port));
 		this.myUriBuilder.setScheme(scheme);
 		this.myUriBuilder.setPath(resource);
-		this.myUriBuilder.addParameter("source", "myFlow");
+		this.myUriBuilder.addParameter("source", props.getProperty("source", "noSource"));
+		if(!props.getProperty("index","").isEmpty()){
+			this.myUriBuilder.addParameter("index", props.getProperty("index"));
+		}
+		this.myUriBuilder.addParameter("sourcetype", props.getProperty("sourcetype", "not specified"));
 		this.myUriBuilder.addParameter("host", getLocalhost());
 		
 	}
@@ -115,6 +121,14 @@ public class SplunkConnectionData {
 
 	private void setPass(String pass) {
 		this.pass = pass;
+	}
+
+	public Boolean getIgnoreSplunkErrors() {
+		return ignoreSplunkErrors;
+	}
+
+	public void setIgnoreSplunkErrors(Boolean ignoreSplunkErrors) {
+		this.ignoreSplunkErrors = ignoreSplunkErrors;
 	}
 	
 

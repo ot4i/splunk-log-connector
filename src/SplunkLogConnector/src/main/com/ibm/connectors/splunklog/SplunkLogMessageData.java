@@ -1,5 +1,6 @@
 package com.ibm.connectors.splunklog;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,7 +21,8 @@ public class SplunkLogMessageData {
 	
 	private void processProperties(Properties props) {
 
-
+		this.params.add(new Parameter("timestamp", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(new java.util.Date())));
+		//this.params.add(new Parameter("index", props.getProperty("index","not specified")));
 		for (Object k : props.keySet())
 		{
 		    String key = k.toString();
