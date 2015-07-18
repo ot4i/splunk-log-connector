@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     18 Jul 2015 15:37:01                                                        
+
+     SplunkLogConnector    
+     builds the connector files in the directory for IIB
+                   
+     carsten                                                                
+     ====================================================================== -->
+<project name="SplunkLogConnector" default="default">
+	<description>
+            builds the connector files in the directory for IIB
+    </description>
+
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+	<target name="default" description="builds the connector files in the directory for IIB">
+		<delete dir="/var/mqsi/connectors/SplunkLog/com" />
+		<mkdir dir="/var/mqsi/connectors/SplunkLog/com"/>
+		<copy todir="/var/mqsi/connectors/SplunkLog">
+			<fileset dir="bin/" />
+			<fileset file="connector.xml"></fileset>
+			<fileset dir="/home/carsten/Libs" includes="**.jar"></fileset>
+		</copy>
+
+	</target>
+
+</project>
