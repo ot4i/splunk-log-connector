@@ -5,7 +5,7 @@ CREATE COMPUTE MODULE TestFlow1_CreateMsgId
 	BEGIN
 		-- CALL CopyMessageHeaders();
 		CALL CopyEntireMessage();
-		SET OutputRoot.HTTPInputHeader = null;
+--		SET OutputRoot.HTTPInputHeader = null;
 --		SET OutputLocalEnvironment.Destination.SplunkLog.Output.user='admin';
 --		SET OutputLocalEnvironment.Destination.SplunkLog.Output.pass='tester';
 --		SET OutputLocalEnvironment.Destination.SplunkLog.Output.host='192.168.56.1';

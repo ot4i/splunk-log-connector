@@ -12,13 +12,13 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="178,117" computeExpression="esql://routine/#TestFlow1_CreateMsgId.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="CreateMsgId"/>
       </nodes>
-      <nodes xmi:type="com_ibm_connectors_splunklog_ComIbmOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="305,118" connectorName="SplunkLog" host="192.168.56.1" port="8089" splunk_Event="Request received" user="admin" pass="tester" usehttps="true" includePayload="true" index="none" resource="/services/receivers/simple" splunk_loglevel="DEBUG">
+      <nodes xmi:type="com_ibm_connectors_splunklog_ComIbmOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="305,118" connectorName="SplunkLog" host="192.168.56.1" port="8089" user="admin" pass="tester" usehttps="true" splunk_loglevel="DEBUG" splunk_Event="Request received" source="TestFlow1" includePayload="true" resource="/services/receivers/simple" ignoreSplunkErrors="false">
         <translation xmi:type="utility:ConstantString" string="LogReq"/>
       </nodes>
       <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="399,118">
         <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>
       </nodes>
-      <nodes xmi:type="com_ibm_connectors_splunklog_ComIbmOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="503,122" connectorName="SplunkLog" host="192.168.56.1" port="8089" splunk_Event="Reply sent" user="admin" pass="tester" usehttps="true" includePayload="false" index="none" resource="/services/receivers/simple" splunk_loglevel="INFO">
+      <nodes xmi:type="com_ibm_connectors_splunklog_ComIbmOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="503,122" connectorName="SplunkLog" host="192.168.56.1" port="8089" user="admin" pass="tester" usehttps="true" splunk_loglevel="INFO" splunk_Event="Reply sent" source="TestFlow1" includePayload="false" resource="/services/receivers/simple" ignoreSplunkErrors="false">
         <translation xmi:type="utility:ConstantString" string="LogRes"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
