@@ -24,10 +24,16 @@
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.splunk_Event" name="splunk_Event" defaultValueLiteral="">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.source" name="source">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.event_source_component" name="event_source_component">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.event_source_host" name="event_source_host">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.includePayload" name="includePayload" defaultValueLiteral="true">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.useSourceType" name="useSourceType" defaultValueLiteral="false">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.sourcetype" name="sourcetype">
@@ -70,18 +76,24 @@
                     <propertyName xmi:type="utility:TranslatableString" key="Property.splunk_loglevel" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
                     <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.splunk_Event">
                       <propertyName xmi:type="utility:TranslatableString" key="Property.splunk_Event" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                      <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.source">
-                        <propertyName xmi:type="utility:TranslatableString" key="Property.source" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                        <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.includePayload">
-                          <propertyName xmi:type="utility:TranslatableString" key="Property.includePayload" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                          <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.sourcetype">
-                            <propertyName xmi:type="utility:TranslatableString" key="Property.sourcetype" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                            <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.index">
-                              <propertyName xmi:type="utility:TranslatableString" key="Property.index" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                              <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.resource">
-                                <propertyName xmi:type="utility:TranslatableString" key="Property.resource" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
-                                <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.ignoreSplunkErrors">
-                                  <propertyName xmi:type="utility:TranslatableString" key="Property.ignoreSplunkErrors" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                      <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.event_source_component">
+                        <propertyName xmi:type="utility:TranslatableString" key="Property.event_source_component" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                        <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.event_source_host">
+                          <propertyName xmi:type="utility:TranslatableString" key="Property.event_source_host" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                          <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.includePayload">
+                            <propertyName xmi:type="utility:TranslatableString" key="Property.includePayload" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                            <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.useSourceType">
+                              <propertyName xmi:type="utility:TranslatableString" key="Property.useSourceType" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                              <propertyDescriptor groupName="Group.EventDetails" describedAttribute="Property.sourcetype">
+                                <propertyName xmi:type="utility:TranslatableString" key="Property.sourcetype" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                                <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.index">
+                                  <propertyName xmi:type="utility:TranslatableString" key="Property.index" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                                  <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.resource">
+                                    <propertyName xmi:type="utility:TranslatableString" key="Property.resource" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                                    <propertyDescriptor groupName="Group.Advanced" describedAttribute="Property.ignoreSplunkErrors">
+                                      <propertyName xmi:type="utility:TranslatableString" key="Property.ignoreSplunkErrors" bundleName="com/ibm/connectors/splunklog/ComIbmOutput" pluginId="SplunkLogNodes"/>
+                                    </propertyDescriptor>
+                                  </propertyDescriptor>
                                 </propertyDescriptor>
                               </propertyDescriptor>
                             </propertyDescriptor>
