@@ -26,8 +26,10 @@ public class SplunkLogOutputNodeUDN extends Node {
 	protected final static String PROPERTY_USEHTTPS = "usehttps";
 	protected final static String PROPERTY_SPLUNK_LOGLEVEL = "splunk_loglevel";
 	protected final static String PROPERTY_SPLUNK_EVENT = "splunk_Event";
-	protected final static String PROPERTY_SOURCE = "source";
+	protected final static String PROPERTY_EVENT_SOURCE_COMPONENT = "event_source_component";
+	protected final static String PROPERTY_EVENT_SOURCE_HOST = "event_source_host";
 	protected final static String PROPERTY_INCLUDEPAYLOAD = "includePayload";
+	protected final static String PROPERTY_USESOURCETYPE = "useSourceType";
 	protected final static String PROPERTY_SOURCETYPE = "sourcetype";
 	protected final static String PROPERTY_INDEX = "index";
 	protected final static String PROPERTY_RESOURCE = "resource";
@@ -82,8 +84,10 @@ public class SplunkLogOutputNodeUDN extends Node {
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_USEHTTPS,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.BOOLEAN, "true","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_LOGLEVEL,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.ENUMERATION, "INFO", ENUM_SPLUNKLOGOUTPUT_SPLUNK_LOGLEVEL.class,"","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_SPLUNK_EVENT,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, "","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
-			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_SOURCE,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, null,"","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
+			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_EVENT_SOURCE_COMPONENT,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, null,"","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
+			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_EVENT_SOURCE_HOST,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, null,"","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_INCLUDEPAYLOAD,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.BOOLEAN, "true","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
+			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_USESOURCETYPE,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.BOOLEAN, "false","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_SOURCETYPE,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, null,"","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_INDEX,		NodeProperty.Usage.OPTIONAL,	false,	NodeProperty.Type.STRING, null,"","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
 			new NodeProperty(SplunkLogOutputNodeUDN.PROPERTY_RESOURCE,		NodeProperty.Usage.MANDATORY,	false,	NodeProperty.Type.STRING, "/services/receivers/simple","","",	"com/ibm/connectors/splunklog/ComIbmOutput",	"SplunkLogNodes"),
@@ -281,22 +285,41 @@ public class SplunkLogOutputNodeUDN extends Node {
 	}
 
 	/**
-	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>source</I>" property
+	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>EventSource(Component)</I>" property
 	 * 
-	 * @param value String ; the value to set the property "<I>source</I>"
+	 * @param value String ; the value to set the property "<I>EventSource(Component)</I>"
 	 */
-	public SplunkLogOutputNodeUDN setSource(String value) {
-		setProperty(SplunkLogOutputNodeUDN.PROPERTY_SOURCE, value);
+	public SplunkLogOutputNodeUDN setEvent_source_component(String value) {
+		setProperty(SplunkLogOutputNodeUDN.PROPERTY_EVENT_SOURCE_COMPONENT, value);
 		return this;
 	}
 
 	/**
-	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>source</I>" property
+	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>EventSource(Component)</I>" property
 	 * 
-	 * @return String; the value of the property "<I>source</I>"
+	 * @return String; the value of the property "<I>EventSource(Component)</I>"
 	 */
-	public String getSource() {
-		return (String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_SOURCE);
+	public String getEvent_source_component() {
+		return (String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_EVENT_SOURCE_COMPONENT);
+	}
+
+	/**
+	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>EventSource(Host)</I>" property
+	 * 
+	 * @param value String ; the value to set the property "<I>EventSource(Host)</I>"
+	 */
+	public SplunkLogOutputNodeUDN setEvent_source_host(String value) {
+		setProperty(SplunkLogOutputNodeUDN.PROPERTY_EVENT_SOURCE_HOST, value);
+		return this;
+	}
+
+	/**
+	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>EventSource(Host)</I>" property
+	 * 
+	 * @return String; the value of the property "<I>EventSource(Host)</I>"
+	 */
+	public String getEvent_source_host() {
+		return (String)getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_EVENT_SOURCE_HOST);
 	}
 
 	/**
@@ -316,6 +339,29 @@ public class SplunkLogOutputNodeUDN extends Node {
 	 */
 	public boolean getIncludePayload(){
 	if (getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_INCLUDEPAYLOAD).equals("true")){
+		return true;
+	} else {
+		return false;
+		}
+	}
+
+	/**
+	 * Set the <I>SplunkLogOutputNodeUDN</I> "<I>Use source type</I>" property
+	 * 
+	 * @param value boolean ; the value to set the property "<I>Use source type</I>"
+	 */
+	public SplunkLogOutputNodeUDN setUseSourceType(boolean value) {
+		setProperty(SplunkLogOutputNodeUDN.PROPERTY_USESOURCETYPE, String.valueOf(value));
+		return this;
+	}
+
+	/**
+	 * Get the <I>SplunkLogOutputNodeUDN</I> "<I>Use source type</I>" property
+	 * 
+	 * @return boolean; the value of the property "<I>Use source type</I>"
+	 */
+	public boolean getUseSourceType(){
+	if (getPropertyValue(SplunkLogOutputNodeUDN.PROPERTY_USESOURCETYPE).equals("true")){
 		return true;
 	} else {
 		return false;
