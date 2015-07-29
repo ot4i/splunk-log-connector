@@ -17,4 +17,9 @@
             <file encoding="Cp1252" name="com/ibm/connectors/helloworld/ComIbmRequest.msgnode"/>
         </directory>
     </extension>
+    <!--This is a generated file.-->
+    <!--User modifications to this section will not be preserved.-->
+    <extension point="com.ibm.etools.mft.util.ui.pdHelpContentProviders">
+        <pdHelpContentProvider file="PDHelp.xml"/>
+    </extension>
 </plugin>

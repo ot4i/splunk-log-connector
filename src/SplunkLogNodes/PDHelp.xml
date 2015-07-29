@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pdHelp xmlns="http://www.ibm.com/visualutils/pdhelpcontent"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ibm.com/visualutils/pdhelpcontent http://www.ibm.com/visualutils/pdhelpcontent">
+    <pluginCategory id="SplunkLogNodes">
+        <fieldHelp id="ComIbmOutput_EventDetails_useSourceType">
+            <title>Use Splunk source type</title>
+            <description>
+                <p>If selected, any custom or dynamic fields will be ignore. Using a source type means that Splunk is configured to extract all relevant information direclty from the message payload.</p>
+            </description>
+        </fieldHelp>
+    </pluginCategory>
+</pdHelp>
