@@ -3,9 +3,8 @@
 CREATE COMPUTE MODULE TestFlow1_CreateMsgId
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		-- CALL CopyMessageHeaders();
 		CALL CopyEntireMessage();
---		SET OutputRoot.HTTPInputHeader = null;
+		SET OutputRoot.HTTPInputHeader = null;
 --		SET OutputLocalEnvironment.Destination.SplunkLog.Output.user='admin';
 --		SET OutputLocalEnvironment.Destination.SplunkLog.Output.pass='tester';
 --		SET OutputLocalEnvironment.Destination.SplunkLog.Output.host='192.168.56.1';
@@ -13,6 +12,7 @@ CREATE COMPUTE MODULE TestFlow1_CreateMsgId
 --		SET OutputLocalEnvironment.Destination.SplunkLog.Output.usehttps='yes';
 		DECLARE chrMsgId CHAR SUBSTRING(CAST(InputLocalEnvironment.Destination.HTTP.RequestIdentifier AS CHAR) FROM 3);
 		SET OutputLocalEnvironment.Destination.SplunkLog.Output.splunk_MsgId=LEFT(chrMsgId, LENGTH(chrMsgId)-1);
+		SET OutputLocalEnvironment.Destination.SplunkLog.Output.event_source_component='dynamic component';
 		RETURN TRUE;
 	END;
 
