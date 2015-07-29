@@ -46,12 +46,12 @@ public class SplunkConnectionData {
 		this.myUriBuilder.setPort(Integer.parseInt(port));
 		this.myUriBuilder.setScheme(scheme);
 		this.myUriBuilder.setPath(resource);
-		this.myUriBuilder.addParameter("source", props.getProperty("source", "noSource"));
+		this.myUriBuilder.addParameter("source", props.getProperty("event_source_component", "noSource"));
 		if(!props.getProperty("index","").isEmpty()){
 			this.myUriBuilder.addParameter("index", props.getProperty("index"));
 		}
 		this.myUriBuilder.addParameter("sourcetype", props.getProperty("sourcetype", "not specified"));
-		this.myUriBuilder.addParameter("host", getLocalhost());
+		this.myUriBuilder.addParameter("host", props.getProperty("event_source_host",getLocalhost()));
 		
 	}
 
