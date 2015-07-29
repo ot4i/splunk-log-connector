@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.ibm.connectors.ConnectorException;
 import com.ibm.connectors.splunklog.SplunkLogMessageData;
 
 public class LogMessageDataTest {
@@ -27,7 +28,13 @@ public class LogMessageDataTest {
 		properties.put("test", "testing");
 		properties.put("splunk_test", "testing2");
 		
-		SplunkLogMessageData ldata = new SplunkLogMessageData(message, properties);
+		SplunkLogMessageData ldata = null;
+		try {
+			ldata = new SplunkLogMessageData(message, properties);
+		} catch (ConnectorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		assertEquals("Expected parameter list size of 1.", 1, ldata.getParams().size());
 		
 		assertEquals("Expected property name test.", "test", ldata.getParams().get(0).getName());
@@ -37,7 +44,13 @@ public class LogMessageDataTest {
 	public void testGetLogMessage_EmptyPayload() {
 		byte[] message = "".getBytes();
 		Properties properties = new Properties();
-		SplunkLogMessageData ldata = new SplunkLogMessageData(message, properties);
+		SplunkLogMessageData ldata = null;
+		try {
+			ldata = new SplunkLogMessageData(message, properties);
+		} catch (ConnectorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		assertEquals("Expected msg saying the payload is empty.","Payload: Empty!", new String(ldata.getLogMessage()));
 	}
 	
@@ -45,7 +58,13 @@ public class LogMessageDataTest {
 	public void testGetLogMessage_WithPayload() {
 		byte[] message = "X".getBytes();
 		Properties properties = new Properties();
-		SplunkLogMessageData ldata = new SplunkLogMessageData(message, properties);
+		SplunkLogMessageData ldata = null;
+		try {
+			ldata = new SplunkLogMessageData(message, properties);
+		} catch (ConnectorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		assertEquals("Expected msg with payload.","Payload: X", new String(ldata.getLogMessage()));
 	}
 	
@@ -56,7 +75,13 @@ public class LogMessageDataTest {
 		properties.put("splunk_UT", "true");
 		properties.put("splunk_UT2", "false");
 		
-		SplunkLogMessageData ldata = new SplunkLogMessageData(message, properties);
+		SplunkLogMessageData ldata = null;
+		try {
+			ldata = new SplunkLogMessageData(message, properties);
+		} catch (ConnectorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		assertEquals("Expected msg with 2 props and empty payload.","UT2=false,UT=true, Payload: Empty!", new String(ldata.getLogMessage()));
 	}
 	
