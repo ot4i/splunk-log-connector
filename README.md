@@ -27,11 +27,7 @@ There are no releases yet. Feel free to have a look and build the code yourself 
 ### Dependencies
 
 The connector uses the following of libraries:
-- commons-codec-1.9.jar
-- commons-httpclient-contrib.jar
-- commons-logging-1.2.jar
 - httpclient-4.5.jar
-- httpclient-cache-4.5.jar
 - httpcore-4.4.1.jar
 
 ### Testing
