@@ -1,3 +1,5 @@
+**This repo has not been in active development for a long while and is being archived. The ACE product has now got a built in Splunk Request node so there is no further active need for this repository.**
+
 # SplunkLog Connector
 
 
